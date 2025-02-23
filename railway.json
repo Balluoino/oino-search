@@ -1,1 +1,12 @@
+{
+  "build": {
+    "base": "nixpacks",
+    "plan": {
+      "languages": ["nodejs"]
+    }
+  },
+  "deploy": {
+    "startCommand": "npm start"
+  }
+}
 
