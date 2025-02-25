@@ -1,0 +1,11 @@
+{
+    "name": "oino-search-backend",
+    "build": {
+      "command": "cd backend && npm install",
+      "cwd": "backend"
+    },
+    "start": {
+      "command": "cd backend && npm start"
+    }
+  }
+  
