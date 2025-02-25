@@ -1,11 +1,7 @@
 {
   "build": {
-    "base": "nixpacks",
-    "plan": {
-      "languages": ["nodejs"]
+    "env": {
+      "NODE_ENV": "production"
     }
-  },
-  "deploy": {
-    "startCommand": "cd backend && npm install && node server.js"
   }
 }
