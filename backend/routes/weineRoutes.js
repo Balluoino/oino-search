@@ -1,7 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const { getWeine } = require('../controllers/weineController');
+const { Pool } = require('pg');
 
-router.get('/weine', getWeine);
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+});
+
+// Route für Wein-Daten
+router.get('/weine', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM weine');
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Fehler beim Abrufen der Weindaten:', err);
+        res.status(500).json({ error: 'Fehler beim Abrufen der Daten' });
+    }
+});
 
 module.exports = router;
