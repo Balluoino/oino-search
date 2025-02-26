@@ -1,12 +1,11 @@
-const pgPool = require('../utils/db');
+const db = require('../utils/db');
 
-async function getWeine(req, res) {
+exports.getWeine = async (req, res) => {
     try {
-        const result = await pgPool.query("SELECT * FROM weine");
+        const result = await db.query('SELECT * FROM weine'); // Ersetze mit deiner Tabelle
         res.json(result.rows);
     } catch (err) {
-        res.status(500).json({ error: "Fehler beim Abrufen der Weine" });
+        console.error('Fehler beim Abrufen der Weine:', err);
+        res.status(500).json({ error: 'Fehler beim Abrufen der Weine' });
     }
-}
-
-module.exports = { getWeine };
+};
